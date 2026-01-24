@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function AboutUs() {
   const teamMembers = [
     {
@@ -49,9 +51,11 @@ export default function AboutUs() {
               <button className="bg-[#1ABC9C] text-white px-8 py-4 rounded-3xl font-extrabold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all">
                 Partner with Experts
               </button>
+              <Link href="/blog">
               <button className="border-2 border-[#2B3D4E]/10 text-[#2B3D4E] px-8 py-4 rounded-3xl font-extrabold text-lg hover:bg-[#2B3D4E]/5 transition-all">
                 View Case Studies
               </button>
+              </Link>
             </div>
           </div>
           <div className="lg:col-span-5 relative">

@@ -1,39 +1,38 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getDatabase } from '@/lib/mongodb';
-import type { Lead } from '@/lib/types';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { fullName, email, phone, company, country, service, message } = body;
+    const { name, email, phone, currentSalary, expectedSalary, message, cv, cvFileName } = body;
 
     // Validate required fields
-    if (!email || !phone) {
+    if (!name || !email || !phone || !expectedSalary) {
       return NextResponse.json(
-        { message: 'Email and phone are required' },
+        { message: 'Required fields are missing' },
         { status: 400 }
       );
     }
 
-    // 1. SAVE TO DATABASE FIRST (most important!)
+    // 1. SAVE TO DATABASE
     const db = await getDatabase();
-    const leadData: Lead = {
-      fullName: fullName || null,
+    const applicationData = {
+      name,
       email,
       phone,
-      company: company || null,
-      country: country || null,
-      service: service || null,
-      message: message || null,
+      currentSalary: currentSalary || 'Not provided',
+      expectedSalary,
+      message: message || 'No message provided',
+      cvFileName: cvFileName || 'No CV',
+      cvData: cv, // Base64 encoded CV
       status: 'new',
-      source: 'website',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      appliedDate: new Date(),
+      updatedDate: new Date(),
     };
 
-    const result = await db.collection('leads').insertOne(leadData);
-    console.log('✅ Lead saved to database:', result.insertedId);
+    const result = await db.collection('job_applications').insertOne(applicationData);
+    console.log('✅ Job application saved to database:', result.insertedId);
 
     // 2. SEND EMAIL NOTIFICATION
     try {
@@ -49,7 +48,6 @@ export async function POST(request: Request) {
         <!DOCTYPE html>
         <html>
           <head>
-            <meta charset="UTF-8">
             <style>
               body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
               .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -58,26 +56,24 @@ export async function POST(request: Request) {
               .field { margin-bottom: 15px; }
               .label { font-weight: bold; color: #2b3d4f; font-size: 12px; text-transform: uppercase; }
               .value { margin-top: 5px; padding: 12px; background: white; border-left: 4px solid #1ABC9C; border-radius: 4px; }
-              .footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd; font-size: 12px; color: #666; }
               .badge { display: inline-block; background: #1ABC9C; color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: bold; }
-              .btn { display: inline-block; background: #2b3d4f; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 10px; }
             </style>
           </head>
           <body>
             <div class="container">
               <div class="header">
-                <h1>🎯 New Lead from Website!</h1>
-                <p>Database ID: ${result.insertedId}</p>
+                <h1 style="margin:0;">💼 New Job Application!</h1>
+                <span class="badge">Database ID: ${result.insertedId}</span>
               </div>
               <div class="content">
                 <div class="field">
-                  <div class="label">👤 Full Name</div>
-                  <div class="value">${fullName || 'Not provided'}</div>
+                  <div class="label">👤 Name</div>
+                  <div class="value">${name}</div>
                 </div>
                 
                 <div class="field">
                   <div class="label">📧 Email</div>
-                  <div class="value">${email}</div>
+                  <div class="value"><a href="mailto:${email}">${email}</a></div>
                 </div>
                 
                 <div class="field">
@@ -86,32 +82,30 @@ export async function POST(request: Request) {
                 </div>
                 
                 <div class="field">
-                  <div class="label">🏢 Company</div>
-                  <div class="value">${company || 'Not provided'}</div>
+                  <div class="label">💰 Current Salary</div>
+                  <div class="value">${currentSalary || 'Not provided'}</div>
                 </div>
                 
                 <div class="field">
-                  <div class="label">🌍 Country</div>
-                  <div class="value">${country || 'Not provided'}</div>
+                  <div class="label">💵 Expected Salary</div>
+                  <div class="value">${expectedSalary}</div>
                 </div>
                 
                 <div class="field">
-                  <div class="label">💼 Service Interest</div>
-                  <div class="value">${service || 'Not specified'}</div>
+                  <div class="label">📄 CV Attached</div>
+                  <div class="value">${cvFileName || 'No CV'}</div>
                 </div>
                 
                 <div class="field">
-                  <div class="label">📝 Message / Challenges</div>
+                  <div class="label">📝 Message</div>
                   <div class="value">${message || 'No message provided'}</div>
                 </div>
                 
-                <div class="footer">
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #ddd;">
                   <p><strong>Received:</strong> ${new Date().toLocaleString()}</p>
-                  <p><span class="badge">Status: NEW</span></p>
-                  <a href="mailto:${email}" class="btn">Reply to ${fullName || 'Contact'}</a>
-                  <p style="margin-top: 20px;">
-                    This lead has been automatically saved to your database.
-                    View all leads in your admin dashboard.
+                  <p><strong>Status:</strong> <span class="badge" style="background:#4CAF50;">NEW</span></p>
+                  <p style="margin-top:15px; font-size:11px; color:#999;">
+                    View this application in your admin dashboard at /admin/applications
                   </p>
                 </div>
               </div>
@@ -124,25 +118,44 @@ export async function POST(request: Request) {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         replyTo: email,
-        subject: `🎯 New Lead: ${fullName} - ${company || 'Website Contact'}`,
+        subject: `💼 New Job Application: ${name}`,
         html: htmlEmail,
       });
 
       console.log('✅ Email notification sent');
     } catch (emailError) {
-      // Email failed but lead is saved - log but don't fail the request
-      console.error('⚠️ Email notification failed (lead still saved):', emailError);
+      console.error('⚠️ Email notification failed (application still saved):', emailError);
     }
 
     return NextResponse.json({
       message: 'Success',
-      leadId: result.insertedId,
+      applicationId: result.insertedId,
     }, { status: 200 });
 
   } catch (error) {
-    console.error('❌ Error processing lead:', error);
+    console.error('❌ Error processing job application:', error);
     return NextResponse.json(
-      { message: 'Error processing your request' },
+      { message: 'Error processing your application' },
+      { status: 500 }
+    );
+  }
+}
+
+// GET - Fetch all job applications (for admin)
+export async function GET(request: Request) {
+  try {
+    const db = await getDatabase();
+    const applications = await db
+      .collection('job_applications')
+      .find({})
+      .sort({ appliedDate: -1 })
+      .toArray();
+
+    return NextResponse.json({ applications }, { status: 200 });
+  } catch (error) {
+    console.error('Error fetching applications:', error);
+    return NextResponse.json(
+      { message: 'Error fetching applications' },
       { status: 500 }
     );
   }

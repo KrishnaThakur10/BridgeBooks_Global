@@ -20,7 +20,7 @@ export default function Contact() {
       company: formData.get('company'),
       country: formData.get('country'),
       service: formData.get('service'),
-      challenges: formData.get('challenges'),
+      message: formData.get('challenges'),
     };
 
     try {
@@ -128,7 +128,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-[#2B3D4E] px-1">Work Email</label>
+                    <label className="text-sm font-bold text-[#2B3D4E] px-1">Work Email*</label>
                     <input 
                       name="email" 
                       required
@@ -141,7 +141,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-[#2B3D4E] px-1">Phone Number</label>
+                    <label className="text-sm font-bold text-[#2B3D4E] px-1">Phone Number*</label>
                     <input 
                       name="phone" 
                       required

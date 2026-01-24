@@ -34,6 +34,9 @@ export default function Header() {
           <Link className={`text-sm font-semibold transition-colors ${isActive('/careers') ? 'text-[#1ABC9C]' : 'text-[#263748] hover:text-[#1ABC9C]'}`} href="/careers">
             Careers
           </Link>
+          <Link className={`text-sm font-semibold transition-colors ${isActive('/blog') ? 'text-[#1ABC9C]' : 'text-[#263748] hover:text-[#1ABC9C]'}`} href="/blog">
+            Blog
+          </Link>
           <Link className={`text-sm font-semibold transition-colors ${isActive('/contact-us') ? 'text-[#1ABC9C]' : 'text-[#263748] hover:text-[#1ABC9C]'}`} href="/contact-us">
             Contact Us
           </Link>

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import {sendEmail} from '@/lib/emailSender.tool';
+import {sendInfo} from '@/lib/emailSender.tool';
 import React from 'react'
 
 const testimonials = [
@@ -26,22 +26,52 @@ const testimonials = [
 ];
 
 export default function Home() {
-
+  
   const [formData, setFormData] = React.useState({
     fullName: '',
-    company: '',
+    phone: '',
     email: '',
-    annualRevenue: '',
+    service: 'Full-Cycle Accounting',
   });
-
-  const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   }
+  
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
+    if (!formData.email.trim() || !formData.phone.trim()) {
+      alert('Please enter your email and phone.');
+      return;
+    }
+
+    await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        service: formData.service,
+      }),
+    });
+  alert('Thank you! We will contact you soon.');
+    // sendInfo({
+    //   fullName: formData.fullName,
+    //   email: formData.email,
+    //   phone: formData.phone,
+    //   service: formData.service,
+    // });
+  };
+  
+
+  // Testimonial handling
+  const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
   const handlePrevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
@@ -49,17 +79,6 @@ export default function Home() {
   const handleNextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    sendEmail({
-      fullName: formData.fullName,
-      email: formData.email,
-      company: formData.company,
-      annualRevenue: formData.annualRevenue,
-    });
-  };
-
   return (
     <>
       {/* Hero Section */}
@@ -97,14 +116,16 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Full Name</label>
-                  <input name="fullName" onChange={handleChange} value={formData.fullName} className="w-full bg-gray-50 border-[1px] border-gray-200 rounded-3xl text-gray-700 focus:border-2 focus:border-[#1ABC9C] placeholder-gray-400 p-3 text-sm transition-all" placeholder="John Doe" type="text"/>
+                  <input name="fullName" onChange={handleChange} value={formData.fullName} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all" placeholder="John Doe" type="text"/>
                 </div>
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-[#2B3D4E] px-1">Phone Number</label>
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Phone Number*</label>
                     <input 
                       name="phone" 
+                      onChange={handleChange}
+                      value={formData.phone} 
                       required
-                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 transition-all" 
+                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-gray-400  text-sm transition-all" 
                       placeholder="+1 (555) 000-0000" 
                       type="tel"
                     />
@@ -112,14 +133,14 @@ export default function Home() {
               </div>
               
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Work Email</label>
-                <input name="email" required onChange={handleChange} value={formData.email} className="w-full bg-gray-50 border-[1px] border-gray-200 rounded-3xl text-gray-700 focus:border-2 focus:border-[#1ABC9C] placeholder-gray-400 p-3 text-sm transition-all" placeholder="john@acme.com" type="email"/>
+                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Work Email*</label>
+                <input name="email" required onChange={handleChange} value={formData.email} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all" placeholder="john@acme.com" type="email"/>
               </div>
               <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Service Interest</label>
                     <select 
                       name="service" 
-                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400 transition-all appearance-none"
+                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all appearance-none"
                       onChange={handleChange} 
                       value={formData.service}
                     >
@@ -146,7 +167,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="max-w-2xl">
               <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-sm mb-3">Expertise</h4>
-              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight">Comprehensive Financial Architecture.</h2>
+              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight leading-14">Comprehensive Financial Architecture.</h2>
             </div>
             <p className="text-gray-500 max-w-sm text-sm">From daily bookkeeping to high-level strategic planning, we cover every aspect of your fiscal health.</p>
           </div>
@@ -190,7 +211,7 @@ export default function Home() {
           <div className="lg:w-1/2 space-y-10">
             <div>
               <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-[10px] mb-3">The Advantage</h4>
-              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Why Modern Firms Partner with Us.</h2>
+              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-14">Why Modern Firms Partner with Us.</h2>
               <p className="text-gray-500 text-base leading-relaxed">Generic accounting firms are reactive. We are proactive. We don't just record the past; we architect your future financial success.</p>
             </div>
 

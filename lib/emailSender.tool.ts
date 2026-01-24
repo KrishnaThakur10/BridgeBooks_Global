@@ -1,4 +1,4 @@
-export async function sendEmail(mailOptions: any) {
+export async function sendInfo(mailOptions: any) {
     const res = await fetch('/api/contact', {
         method: 'POST',
         headers: {

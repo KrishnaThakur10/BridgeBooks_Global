@@ -1,3 +1,4 @@
+import {JobApplicationForm} from './JobApplicationForm';
 export default function Careers() {
   const jobs = [
     {
@@ -92,9 +93,19 @@ export default function Careers() {
           </div>
         </div>
       </section>
+      {/* Job Application Form */}
+      <section className="py-24 px-6 lg:px-20 bg-white" id="apply">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-extrabold text-primary mb-4">Join Our Team</h2>
+            <p className="text-gray-600 text-lg">Apply now and we'll get back to you within 48 hours.</p>
+          </div>
 
+          <JobApplicationForm />
+        </div>
+      </section>
       {/* Benefits Section */}
-      <section className="py-24 bg-[#2B3D4E] text-white px-6 lg:px-20 overflow-hidden relative">
+      {/* <section className="py-24 bg-[#2B3D4E] text-white px-6 lg:px-20 overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="grid grid-cols-2 gap-4">
@@ -143,10 +154,10 @@ export default function Careers() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Job Listings */}
-      <section className="py-24 bg-[#F9FAFA] px-6 lg:px-20" id="open-roles">
+      {/* <section className="py-24 bg-[#F9FAFA] px-6 lg:px-20" id="open-roles">
         <div className="max-w-5xl mx-auto ">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-extrabold tracking-tight mb-4 text-[#2B3D4E]">Open Opportunities</h3>
@@ -182,7 +193,7 @@ export default function Careers() {
             <button className="text-[#25565D] font-bold hover:text-[#0ea9b1] underline underline-offset-4">Join our Talent Pool</button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA / Footer Lead Gen */}
       <section className="py-20 px-6 lg:px-20 bg-[#F9FAFA]" >
@@ -192,7 +203,7 @@ export default function Careers() {
             <h2 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Ready to Elevate Your Career?</h2>
             <p className="text-white/70 text-lg">Subscribe to our careers newsletter to get notified of new openings and firm insights.</p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input className="flex-1 px-6 py-4 rounded-3xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:ring-[#1ABC9C] focus:border-[#1ABC9C]" placeholder="Enter your email" type="email"/>
+              <input className="flex-1 w-full bg-white text-[#2B3D4E] placeholder:text-gray-500 px-6 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] shadow-sm" placeholder="Enter your email" type="email"/>
               <button className="px-8 py-4 bg-[#1ABC9C] text-white font-bold rounded-3xl hover:bg-[#1ABC9C]/90 shadow-xl shadow-[#1ABC9C]/20 transition-all">Subscribe</button>
             </form>
           </div>
