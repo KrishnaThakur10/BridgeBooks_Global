@@ -1,4 +1,7 @@
+import Link from 'next/link';
 export default function Services() {
+
+
   const services = [
     {
       icon: 'account_balance_wallet',
@@ -57,35 +60,35 @@ export default function Services() {
 
   return (
     <main className="min-w-full bg-[#F9FAFA]">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-20">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
         {/* Hero Section */}
-        <section className="py-16 md:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col gap-8 ">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+            <div className="flex flex-col gap-6 sm:gap-8">
               <div className="inline-flex items-center gap-2 px-3 py-1 text-[#1ABC9C] rounded-full bg-[#1ABC9C]/10 text-xs font-bold uppercase tracking-widest w-fit">
                 <span className="material-symbols-outlined text-sm text-[#1ABC9C]">trending_up</span>
                 Strategic Growth Partners
               </div>
-              <h1 className="text-[#2B3D4F] text-5xl md:text-6xl font-normal leading-[1.1] tracking-tight">
+              <h1 className="text-[#2B3D4F] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.1] tracking-tight">
                 <span className="bg-gradient-to-r from-[#2B3D4F] to-[#237873] bg-clip-text text-transparent" >Modern Financial</span><span className="bg-gradient-to-r from-[#247370] to-[#1BB598] bg-clip-text text-transparent"> Intelligence</span> for Scaling Teams.
               </h1>
-              <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-[540px]">
+              <p className="text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed max-w-[540px]">
                 We bridge the gap between traditional accounting and high-growth strategy. Optimize your operations with tech-enabled bookkeeping and Virtual CFO insights.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex min-w-[200px] items-center justify-center rounded-3xl h-14 px-8 bg-[#2B3D4E] text-white text-base font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button className="flex min-w-[200px] items-center justify-center rounded-3xl h-12 sm:h-14 px-6 sm:px-8 bg-[#2B3D4E] text-white text-sm sm:text-base font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
                   Book Strategy Call
                 </button>
-                <button className="flex min-w-[200px] items-center justify-center rounded-3xl h-14 px-8 border-2 border-[#2B3D4E]/10 bg-white text-[#2B3D4E] text-base font-bold hover:bg-slate-50 transition-colors">
+                <button className="flex min-w-[200px] items-center justify-center rounded-3xl h-12 sm:h-14 px-6 sm:px-8 border-2 border-[#2B3D4E]/10 bg-white text-[#2B3D4E] text-sm sm:text-base font-bold hover:bg-slate-50 transition-colors">
                   Explore Services
                 </button>
               </div>
             </div>
             <div className="relative">
-              <div className="absolute -top-10 -right-10 size-64 bg-accent/5 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-10 -left-10 size-64 bg-primary/5 rounded-full blur-3xl"></div>
+              <div className="absolute -top-10 -right-10 size-48 sm:size-64 bg-accent/5 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 size-48 sm:size-64 bg-primary/5 rounded-full blur-3xl"></div>
               <div 
-                className="w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-3xl shadow-2xl relative z-10 overflow-hidden" 
+                className="w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl sm:rounded-3xl shadow-2xl relative z-10 overflow-hidden" 
                 style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDV0HfWV17g6cNbJZroHwjVZxvzCl00Pa7fDTnHq4xWzFG9k-XrkSS9sSPvlkxQJLMvpcnboXgSdHrPLuvRuI5f5v1dzC1Utmbsx-Ml9KjIF1iI9k-k8QpXj1MjQNYwUQMFSFCMF4HLuRBet_wzYUOdYeXO1XMHJvj0uHODgaMaixPORI7VFexErumb-ckARVX2uoSNa2wyAbEmcCekls7K5o41QExPqU2-7bh9yuJdORsXoLrB2O_rpepbzqed26kYcDQCOysSWNpZ')"}}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
@@ -95,14 +98,14 @@ export default function Services() {
         </section>
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 py-12">
-          <h2 className="text-[#2B3D4E] text-3xl md:text-4xl font-normal tracking-tight">Core Financial Infrastructure</h2>
-          <div className="h-1.5 w-24 bg-[#10BB9D] rounded-full"></div>
-          <p className="text-slate-500 max-w-xl text-base">Comprehensive outsourced solutions tailored for organic SEO growth and long-term business scalability.</p>
+        <div className="flex flex-col items-center text-center gap-3 sm:gap-4 py-8 sm:py-12">
+          <h2 className="text-[#2B3D4E] text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight">Core Financial Infrastructure</h2>
+          <div className="h-1.5 w-20 sm:w-24 bg-[#10BB9D] rounded-full"></div>
+          <p className="text-slate-500 max-w-xl text-sm sm:text-base px-4">Comprehensive outsourced solutions tailored for organic SEO growth and long-term business scalability.</p>
         </div>
 
         {/* Service Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 py-8 sm:py-10">
           {services.map((service, i) => (
             <div 
               key={i} 
@@ -114,38 +117,42 @@ export default function Services() {
               <div>
                 <h3 className="text-[#2B3D4E] text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">{service.description}</p>
-                <a className="flex items-center gap-2 text-[#10BB9D] font-bold text-sm hover:gap-3 transition-all" href="#">
+                <Link href="/contact-us">
+                <div className="flex items-center gap-2 text-[#10BB9D] font-bold text-sm hover:gap-3 transition-all" >
                   View Details <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
+                </div>
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
         {/* Feature Section */}
-        <section className="py-20">
-          <div className="bg-[#2B3D4E] rounded-[2rem] p-8 md:p-16 relative overflow-hidden">
+        <section className="py-12 sm:py-16 lg:py-20">
+          <div className="bg-[#2B3D4E] rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
               <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
                 <path d="M0,0 L100,0 L100,100 Z" fill="white"></path>
               </svg>
             </div>
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="flex flex-col gap-6">
-                <h2 className="text-white text-4xl font-normal leading-tight">Why Choose the Hub for Your Growth?</h2>
-                <p className="text-slate-300 text-lg leading-relaxed">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+              <div className="flex flex-col gap-4 sm:gap-6">
+                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-normal leading-tight">Why Choose the Hub for Your Growth?</h2>
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
                   We combine human expertise with predictive analytics. Our platform doesn't just record history; it helps you write your future.
                 </p>
-                <button className="bg-[#10BB9D] text-white px-8 py-4 rounded-3xl font-bold w-fit hover:bg-white hover:text-[#2B3D4E] transition-all shadow-lg shadow-[#2B3D4E]/20">
+                <Link href="/contact-us">
+                <button className="bg-[#10BB9D] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-3xl font-bold w-fit hover:bg-white hover:text-[#2B3D4E] transition-all shadow-lg shadow-[#2B3D4E]/20 text-sm sm:text-base">
                   Partner With Us
                 </button>
+                </Link>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {features.map((feature, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-[#10BB9D] text-3xl mb-4 block">{feature.icon}</span>
-                    <h4 className="text-white font-bold text-lg mb-1">{feature.title}</h4>
-                    <p className="text-slate-400 text-sm">{feature.description}</p>
+                  <div key={i} className="bg-white/5 border border-white/10 p-5 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-[#10BB9D] text-2xl sm:text-3xl mb-3 sm:mb-4 block">{feature.icon}</span>
+                    <h4 className="text-white font-bold text-base sm:text-lg mb-1">{feature.title}</h4>
+                    <p className="text-slate-400 text-xs sm:text-sm">{feature.description}</p>
                   </div>
                 ))}
               </div>

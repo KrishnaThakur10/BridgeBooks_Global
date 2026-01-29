@@ -1,104 +1,74 @@
 import {JobApplicationForm} from './JobApplicationForm';
-export default function Careers() {
-  const jobs = [
-    {
-      department: 'Tax Department',
-      type: 'Full-Time',
-      title: 'Senior Tax Associate',
-      location: 'Remote (USA)',
-      salary: '$95k - $120k'
-    },
-    {
-      department: 'Audit & Assurance',
-      type: 'Full-Time',
-      title: 'Audit Manager',
-      location: 'Hybrid (Austin, TX)',
-      salary: '$110k - $140k'
-    },
-    {
-      department: 'Client Services',
-      type: 'Full-Time',
-      title: 'Client Success Coordinator',
-      location: 'Remote (Global)',
-      salary: '$65k - $85k'
-    },
-    {
-      department: 'Advisory',
-      type: 'Contract',
-      title: 'Outsourced CFO',
-      location: 'Remote',
-      salary: 'Competitive Hourly'
-    }
-  ];
 
+export default function Careers() {
   return (
-    <main>
+    <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#F9FAFA] px-6 lg:px-20 pt-16 pb-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-xs font-bold uppercase tracking-widest w-fit">
+      <section className="relative bg-[#F9FAFA] px-4 sm:px-6 lg:px-20 pt-14 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-7 flex flex-col gap-6 sm:gap-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] w-fit">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1ABC9C] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1ABC9C]"></span>
               </span>
               We're Hiring
             </div>
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-[-0.04em] text-[#2B3D4E]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-[-0.04em] text-[#2B3D4E]">
               Shape the Future <br/>of <span className="text-[#1ABC9C] italic">Finance.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#2B3D4E]/70 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-[#2B3D4E]/70 max-w-2xl leading-relaxed">
               Join an elite accounting firm where technology meets tradition. We value innovation, integrity, and your professional evolution.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a className="px-8 py-4 bg-[#2B3D4E] text-white font-bold rounded-3xl shadow-xl shadow-[#2B3D4E]/20 hover:-translate-y-1 transition-all" href="#open-roles">View Open Roles</a>
-              <a className="px-8 py-4 bg-white border border-gray-200 text-[#2B3D4E] font-bold rounded-3xl hover:bg-gray-50 transition-all" href="#values">Our Culture</a>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <a className="px-6 sm:px-7 lg:px-8 py-3 sm:py-4 bg-[#2B3D4E] text-white font-bold rounded-3xl shadow-xl shadow-[#2B3D4E]/20 hover:-translate-y-1 transition-all" href="#open-roles">View Open Roles</a>
+              <a className="px-6 sm:px-7 lg:px-8 py-3 sm:py-4 bg-white border border-gray-200 text-[#2B3D4E] font-bold rounded-3xl hover:bg-gray-50 transition-all" href="#values">Our Culture</a>
             </div>
           </div>
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative w-full max-w-xl lg:max-w-none mx-auto">
             <div 
               className="w-full aspect-[4/5] bg-center bg-cover rounded-3xl shadow-2xl relative z-10" 
               style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIt-oIDRadF4JAxLWMNhQINxrdaoRBMnwAv7YKRcMh-Nzh2h9BO8w7TwXjqA-2s0-IwzM0xFBdSuXJzE-Z_AA9cw8FdIqFXYbZ1IYTjxfDmfCzbpyTOxs6HHme_C379gT5V6_1xkjANvMxHqE2GYPobPKhDCNEaKyFiDDHK3C5Xj4dr0o81WNN7g8gayCm5v9pgo8icjveNCqJdVL6yIrwgyqbILDr1xQQvihGO5J9BUGiZQKlI7aYWrfUC9nT0tKZcZIrIQwHwkmL")'}}
             >
             </div>
-            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-[#1ABC9C]/10 rounded-3xl -z-0"></div>
+            <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 bg-[#1ABC9C]/10 rounded-3xl -z-0"></div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-white px-6 lg:px-20" id="values">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white px-4 sm:px-6 lg:px-20" id="values">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
-            <div className="max-w-2xl">
-              <h2 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-sm mb-4">Core Values</h2>
-              <h3 className="text-4xl font-extrabold tracking-tight text-[#2B3D4E]">The Principles that Drive Us</h3>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <div className="max-w-2xl space-y-2">
+              <h2 className="text-[#1ABC9C] font-bold uppercase tracking-[0.25em] text-xs sm:text-sm">Core Values</h2>
+              <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#2B3D4E]">The Principles that Drive Us</h3>
             </div>
-            <p className="text-[#2B3D4E]/70 max-w-sm">We blend corporate reliability with a tech-forward mindset to empower every team member.</p>
+            <p className="text-[#2B3D4E]/70 max-w-sm text-sm sm:text-base">We blend corporate reliability with a tech-forward mindset to empower every team member.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               { icon: 'lightbulb', title: 'Innovation', desc: 'Leveraging the latest fintech to automate the mundane and focus on strategic high-level advisory.' },
               { icon: 'balance', title: 'Balance', desc: 'A remote-first culture that genuinely respects your boundaries. We measure impact, not hours at a desk.' },
               { icon: 'trending_up', title: 'Growth', desc: 'Clear, documented paths to leadership. We invest in your certifications, courses, and long-term career.' }
             ].map((value, i) => (
-              <div key={i} className="group p-8 rounded-2xl border border-gray-100 bg-[#F9FAFA] hover:border-[#1ABC9C]/30 hover:shadow-xl hover:shadow-[#1ABC9C]/5 transition-all">
-                <div className="w-12 h-12 rounded-3xl bg-[#2B3D4E] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div key={i} className="group p-6 sm:p-8 rounded-2xl border border-gray-100 bg-[#F9FAFA] hover:border-[#1ABC9C]/30 hover:shadow-xl hover:shadow-[#1ABC9C]/5 transition-all">
+                <div className="w-12 h-12 rounded-3xl bg-[#2B3D4E] text-white flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined">{value.icon}</span>
                 </div>
-                <h4 className="text-xl font-bold mb-3 text-[#2C2C2C]">{value.title}</h4>
-                <p className="text-gray-600 leading-relaxed">{value.desc}</p>
+                <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#2C2C2C]">{value.title}</h4>
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{value.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
       {/* Job Application Form */}
-      <section className="py-24 px-6 lg:px-20 bg-white" id="apply">
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-20 bg-white" id="apply">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-extrabold text-primary mb-4">Join Our Team</h2>
-            <p className="text-gray-600 text-lg">Apply now and we'll get back to you within 48 hours.</p>
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-primary mb-3 sm:mb-4">Join Our Team</h2>
+            <p className="text-gray-600 text-base sm:text-lg">Apply now and we'll get back to you within 48 hours.</p>
           </div>
 
           <JobApplicationForm />
@@ -196,15 +166,15 @@ export default function Careers() {
       </section> */}
 
       {/* CTA / Footer Lead Gen */}
-      <section className="py-20 px-6 lg:px-20 bg-[#F9FAFA]" >
-        <div className="max-w-7xl mx-auto rounded-[2rem] bg-[#2B3D4E] p-12 lg:p-20 relative overflow-hidden text-center">
+      <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20 bg-[#F9FAFA]" >
+        <div className="max-w-7xl mx-auto rounded-[2rem] bg-[#2B3D4E] p-8 sm:p-12 lg:p-16 xl:p-20 relative overflow-hidden text-center">
           <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.2) 1px, transparent 0)', backgroundSize: '24px 24px'}}></div>
           <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Ready to Elevate Your Career?</h2>
-            <p className="text-white/70 text-lg">Subscribe to our careers newsletter to get notified of new openings and firm insights.</p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input className="flex-1 w-full bg-white text-[#2B3D4E] placeholder:text-gray-500 px-6 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] shadow-sm" placeholder="Enter your email" type="email"/>
-              <button className="px-8 py-4 bg-[#1ABC9C] text-white font-bold rounded-3xl hover:bg-[#1ABC9C]/90 shadow-xl shadow-[#1ABC9C]/20 transition-all">Subscribe</button>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Ready to Elevate Your Career?</h2>
+            <p className="text-white/70 text-base sm:text-lg">Subscribe to our careers newsletter to get notified of new openings and firm insights.</p>
+            <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
+              <input className="flex-1 w-full bg-white text-[#2B3D4E] placeholder:text-gray-500 px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] shadow-sm" placeholder="Enter your email" type="email"/>
+              <button className="px-7 sm:px-8 py-3.5 sm:py-4 bg-[#1ABC9C] text-white font-bold rounded-3xl hover:bg-[#1ABC9C]/90 shadow-xl shadow-[#1ABC9C]/20 transition-all">Subscribe</button>
             </form>
           </div>
         </div>

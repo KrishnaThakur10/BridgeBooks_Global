@@ -163,8 +163,8 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="material-symbols-outlined text-white">dashboard</span>
@@ -174,24 +174,24 @@ export default function AdminDashboard() {
                 <p className="text-xs text-gray-500">{leads.length} total leads</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <Link
                 href="/admin/applications"
-                className="flex items-center gap-2 px-4 py-2 bg-[#2B3D4E] text-white rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-[#2B3D4E] text-white rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
               >
                 <span className="material-symbols-outlined text-sm">work</span>
                 Job Applications
               </Link>
               <button
                 onClick={exportToCSV}
-                className="flex items-center gap-2 px-4 py-2 bg-[#10BB9D] text-white rounded-lg font-bold text-sm hover:bg-accent/90"
+                className="flex items-center gap-2 px-4 py-2 bg-[#10BB9D] text-white rounded-lg font-bold text-sm hover:bg-accent/90 w-full sm:w-auto justify-center"
               >
                 <span className="material-symbols-outlined text-sm">download</span>
                 Export CSV
               </button>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg font-bold text-sm hover:bg-gray-50"
+                className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg font-bold text-sm hover:bg-gray-50 w-full sm:w-auto justify-center"
               >
                 <span className="material-symbols-outlined text-sm">logout</span>
                 Logout
@@ -201,17 +201,17 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-          <div className="bg-white rounded-xl p-6 border border-gray-100">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-gray-500 uppercase">All Leads</span>
               <span className="material-symbols-outlined text-gray-400">group</span>
             </div>
             <p className="text-2xl font-black text-primary">{leads.length}</p>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-blue-500 uppercase">New</span>
               <span className="material-symbols-outlined text-blue-400">fiber_new</span>
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
               {leads.filter(l => l.status === 'new').length}
             </p>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-yellow-500 uppercase">Contacted</span>
               <span className="material-symbols-outlined text-yellow-400">call</span>
@@ -229,7 +229,7 @@ export default function AdminDashboard() {
               {leads.filter(l => l.status === 'contacted').length}
             </p>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-purple-500 uppercase">Qualified</span>
               <span className="material-symbols-outlined text-purple-400">verified</span>
@@ -238,7 +238,7 @@ export default function AdminDashboard() {
               {leads.filter(l => l.status === 'qualified').length}
             </p>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-gray-100">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-green-500 uppercase">Converted</span>
               <span className="material-symbols-outlined text-green-400">check_circle</span>
@@ -250,21 +250,21 @@ export default function AdminDashboard() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl p-6 mb-6 border border-gray-100">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="bg-white rounded-xl p-5 sm:p-6 mb-6 border border-gray-100">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
             <div className="flex-1">
               <input
                 type="text"
                 placeholder="Search by name, email, or company..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent text-sm sm:text-base"
               />
             </div>
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
+              className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent text-sm sm:text-base"
             >
               <option value="all">All Status</option>
               <option value="new">New</option>
@@ -282,13 +282,13 @@ export default function AdminDashboard() {
             <table className="w-full">
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Company</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Email</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Service</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Actions</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Name</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Company</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Email</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Service</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Status</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Date</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-bold text-gray-500 uppercase">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -307,18 +307,18 @@ export default function AdminDashboard() {
                 ) : (
                   filteredLeads.map((lead) => (
                     <tr key={lead._id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4">
-                        <div className="font-bold text-primary">{lead.fullName}</div>
+                      <td className="px-4 sm:px-6 py-4">
+                        <div className="font-bold text-primary text-sm sm:text-base">{lead.fullName}</div>
                         <div className="text-xs text-gray-500">{lead.phone}</div>
                       </td>
-                      <td className="px-6 py-4 text-sm">{lead.company || '-'}</td>
-                      <td className="px-6 py-4">
-                        <a href={`mailto:${lead.email}`} className="text-accent hover:underline text-sm">
+                      <td className="px-4 sm:px-6 py-4 text-sm">{lead.company || '-'}</td>
+                      <td className="px-4 sm:px-6 py-4">
+                        <a href={`mailto:${lead.email}`} className="text-accent hover:underline text-sm break-all">
                           {lead.email}
                         </a>
                       </td>
-                      <td className="px-6 py-4 text-sm">{lead.service || '-'}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 sm:px-6 py-4 text-sm">{lead.service || '-'}</td>
+                      <td className="px-4 sm:px-6 py-4">
                         <select
                           value={lead.status}
                           onChange={(e) => updateLeadStatus(lead._id, e.target.value)}
@@ -331,10 +331,10 @@ export default function AdminDashboard() {
                           <option value="lost">Lost</option>
                         </select>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500">
+                      <td className="px-4 sm:px-6 py-4 text-sm text-gray-500">
                         {new Date(lead.createdAt).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 sm:px-6 py-4">
                         <button
                           onClick={() => setSelectedLead(lead)}
                           className="text-accent hover:text-accent/80 text-sm font-bold"
@@ -355,9 +355,9 @@ export default function AdminDashboard() {
       {selectedLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-extrabold text-primary">Lead Details</h2>
+            <div className="p-6 sm:p-8">
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-primary">Lead Details</h2>
                 <button
                   onClick={() => setSelectedLead(null)}
                   className="text-gray-400 hover:text-gray-600"
@@ -370,7 +370,7 @@ export default function AdminDashboard() {
                   <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
                   <p className="text-lg font-bold text-primary">{selectedLead.fullName}</p>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-bold text-gray-500 uppercase">Email</label>
                     <p className="text-sm">{selectedLead.email}</p>
@@ -380,7 +380,7 @@ export default function AdminDashboard() {
                     <p className="text-sm">{selectedLead.phone || 'Not provided'}</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-bold text-gray-500 uppercase">Company</label>
                     <p className="text-sm">{selectedLead.company || 'Not provided'}</p>
@@ -398,7 +398,7 @@ export default function AdminDashboard() {
                   <label className="text-xs font-bold text-gray-500 uppercase">Message/Challenges</label>
                   <p className="text-sm bg-gray-50 p-4 rounded-lg">{selectedLead.message || 'No message'}</p>
                 </div>
-                <div className="pt-4 flex gap-3">
+                <div className="pt-4 flex flex-col sm:flex-row gap-3">
                   <a
                     href={`mailto:${selectedLead.email}`}
                     className="flex-1 bg-accent text-white text-center font-bold py-3 rounded-xl hover:bg-accent/90"

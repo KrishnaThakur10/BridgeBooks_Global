@@ -156,23 +156,23 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 px-6 md:px-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="relative py-14 sm:py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-accent font-bold mb-8 hover:gap-3 transition-all">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-accent font-bold mb-6 sm:mb-8 hover:gap-3 transition-all">
             <span className="material-symbols-outlined">arrow_back</span>
             Back to Blog
           </Link>
           
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-bold">{post.category}</span>
-            <span className="text-gray-500 text-sm">{post.readTime}</span>
+          <div className="flex flex-wrap items-center gap-3 mb-5 sm:mb-6">
+            <span className="px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-bold">{post.category}</span>
+            <span className="text-gray-500 text-xs sm:text-sm">{post.readTime}</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold text-primary leading-[1.1] mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary leading-[1.1] mb-5 sm:mb-6">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-6 mb-8">
+          <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <span className="material-symbols-outlined text-primary">person</span>
@@ -186,7 +186,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
             {post.tags.map(tag => (
               <span key={tag} className="px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold">
                 #{tag}
@@ -197,14 +197,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </section>
 
       {/* Featured Image */}
-      <section className="px-6 md:px-20 -mt-8">
+      <section className="px-4 sm:px-6 md:px-10 lg:px-20 -mt-6 sm:-mt-8">
         <div className="max-w-5xl mx-auto">
           <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl bg-cover bg-center" style={{backgroundImage: `url(${post.image})`}}></div>
         </div>
       </section>
 
       {/* Article Content */}
-      <article className="py-16 px-6 md:px-20">
+      <article className="py-14 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div 
             className="prose prose-lg max-w-none
@@ -223,24 +223,24 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </article>
 
       {/* Author Bio */}
-      <section className="py-12 px-6 md:px-20 bg-gray-50">
+      <section className="py-12 px-4 sm:px-6 md:px-10 lg:px-20 bg-gray-50">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-start gap-6 p-8 bg-white rounded-2xl border border-gray-200">
-            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 p-6 sm:p-8 bg-white rounded-2xl border border-gray-200">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
               <span className="material-symbols-outlined text-primary text-3xl">person</span>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-primary mb-2">About {post.author}</h3>
-              <p className="text-gray-600 leading-relaxed">{post.authorBio}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-primary mb-2">About {post.author}</h3>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{post.authorBio}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Share Section */}
-      <section className="py-12 px-6 md:px-20 border-y border-gray-200">
+      <section className="py-12 px-4 sm:px-6 md:px-10 lg:px-20 border-y border-gray-200">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <h3 className="font-bold text-lg">Share this article</h3>
             <div className="flex gap-3">
               <button className="w-10 h-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white transition-all flex items-center justify-center">
@@ -258,10 +258,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </section>
 
       {/* Related Posts */}
-      <section className="py-20 px-6 md:px-20 bg-background-light">
+      <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-background-light">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold mb-8">Related Articles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold mb-6 sm:mb-8">Related Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {relatedPosts.map(relatedPost => (
               <Link
                 key={relatedPost.slug}
@@ -287,15 +287,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 md:px-20 bg-primary">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Need Expert Financial Guidance?</h2>
-          <p className="text-white/80 text-lg mb-8">
+      <section className="py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-primary">
+        <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-5">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Need Expert Financial Guidance?</h2>
+          <p className="text-white/80 text-base sm:text-lg">
             Our team of certified CPAs is ready to help you navigate complex financial challenges.
           </p>
           <Link
             href="/contact-us"
-            className="inline-block px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-lg"
+            className="inline-block px-7 sm:px-8 py-3.5 sm:py-4 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-lg"
           >
             Schedule Free Consultation
           </Link>

@@ -112,17 +112,17 @@ export default function Blog() {
   return (
     <main className="bg-background-light">
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20 px-6 md:px-20">
+      <section className="bg-primary text-white py-14 sm:py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1ABC9C]/20 text-[#1ABC9C] text-xs font-bold uppercase tracking-widest mb-6">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1ABC9C]/20 text-[#1ABC9C] text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-4">
               <span className="material-symbols-outlined text-sm">article</span>
               Insights & Resources
             </div>
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-[-0.04em] text-[#2B3D4E]">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-[1.1] tracking-[-0.04em] text-white">
               Financial Insights for <span className="text-[#1ABC9C] italic">Modern Businesses</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#2B3D4E]/70 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-2xl leading-relaxed">
               Expert advice, industry trends, and actionable strategies to help you make smarter financial decisions.
             </p>
           </div>
@@ -131,8 +131,8 @@ export default function Blog() {
 
       {/* Search & Filter */}
       <section className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 py-6">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-4 sm:py-5">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 items-center justify-between">
             <div className="flex-1 w-full md:max-w-md">
               <div className="relative">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
@@ -141,7 +141,7 @@ export default function Blog() {
                   placeholder="Search articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C]"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] text-sm sm:text-base"
                 />
               </div>
             </div>
@@ -166,13 +166,13 @@ export default function Blog() {
 
       {/* Featured Posts */}
       {selectedCategory === 'all' && !searchTerm && (
-        <section className="py-16 px-6 md:px-20">
+        <section className="py-14 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-20">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="material-symbols-outlined text-[#1ABC9C] text-3xl">star</span>
-              <h2 className="text-3xl font-extrabold">Featured Articles</h2>
+            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+              <span className="material-symbols-outlined text-[#1ABC9C] text-2xl sm:text-3xl">star</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold">Featured Articles</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               {featuredPosts.map((post) => (
                 <Link
                   key={post.slug}
@@ -180,13 +180,13 @@ export default function Blog() {
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="aspect-[16/9] bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{backgroundImage: `url(${post.image})`}}></div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="px-3 py-1 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-xs font-bold">{post.category}</span>
+                  <div className="p-6 sm:p-8">
+                    <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                      <span className="px-3 py-1 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-[11px] sm:text-xs font-bold">{post.category}</span>
                       <span className="text-xs text-gray-500">{post.readTime}</span>
                     </div>
-                    <h3 className="text-2xl font-extrabold text-primary mb-3 group-hover:text-[#1ABC9C] transition-colors">{post.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-primary mb-3 group-hover:text-[#1ABC9C] transition-colors leading-snug">{post.title}</h3>
+                    <p className="text-gray-600 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">{post.excerpt}</p>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -208,13 +208,13 @@ export default function Blog() {
       )}
 
       {/* All Posts */}
-      <section className="py-16 px-6 md:px-20 bg-white">
+      <section className="py-14 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-extrabold">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold">
               {searchTerm ? 'Search Results' : selectedCategory === 'all' ? 'Latest Articles' : selectedCategory}
             </h2>
-            <p className="text-gray-500">{filteredPosts.length} articles</p>
+            <p className="text-gray-500 text-sm sm:text-base">{filteredPosts.length} articles</p>
           </div>
           
           {filteredPosts.length === 0 ? (
@@ -224,7 +224,7 @@ export default function Blog() {
               <p className="text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {regularPosts.map((post) => (
                 <Link
                   key={post.slug}
@@ -232,13 +232,13 @@ export default function Blog() {
                   className="group bg-background-light rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="aspect-[16/9] bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{backgroundImage: `url(${post.image})`}}></div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
+                  <div className="p-5 sm:p-6">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                       <span className="px-2 py-1 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-[10px] font-bold uppercase">{post.category}</span>
                       <span className="text-xs text-gray-500">{post.readTime}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-[#1ABC9C] transition-colors line-clamp-2">{post.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-primary mb-2 group-hover:text-[#1ABC9C] transition-colors line-clamp-2 leading-snug">{post.title}</h3>
+                    <p className="text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-3">{post.excerpt}</p>
                     <div className="flex items-center gap-2 text-xs text-gray-500 pt-4 border-t border-gray-200">
                       <span className="material-symbols-outlined text-sm">person</span>
                       <span className="font-semibold">{post.author.split(',')[0]}</span>
@@ -254,20 +254,20 @@ export default function Blog() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 px-6 lg:px-20 bg-[#F9FAFA]">
-        <div className="max-w-7xl mx-auto rounded-[2rem] bg-[#2B3D4E] p-12 lg:p-20 relative overflow-hidden text-center">
+      <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20 bg-[#F9FAFA]">
+        <div className="max-w-7xl mx-auto rounded-[2rem] bg-[#2B3D4E] p-8 sm:p-12 lg:p-16 relative overflow-hidden text-center">
           <div className='w-10 h-10 mb-3 mx-auto text-center rounded-full bg-[#1ABC9C]/20 flex items-center justify-center flex-shrink-0'>
-          <span className="material-symbols-outlined text-5xl text-[#1ABC9C]  block">mail</span>
+          <span className="material-symbols-outlined text-4xl sm:text-5xl text-[#1ABC9C]  block">mail</span>
           </div>
-          <h2 className="text-4xl font-extrabold text-white mb-4">Stay Updated</h2>
-          <p className="text-white/70 text-lg mb-8">Get the latest financial insights delivered to your inbox weekly</p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 sm:mb-4">Stay Updated</h2>
+          <p className="text-white/70 text-base sm:text-lg mb-6 sm:mb-8">Get the latest financial insights delivered to your inbox weekly</p>
+          <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 w-full bg-white text-[#2B3D4E] placeholder:text-gray-500 px-6 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] shadow-sm"
+              className="flex-1 w-full bg-white text-[#2B3D4E] placeholder:text-gray-500 px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] shadow-sm text-sm sm:text-base"
             />
-            <button className="px-8 py-4 bg-[#1ABC9C] text-white font-bold rounded-xl hover:bg-[#17a08a] transition-all shadow-lg">
+            <button className="px-7 sm:px-8 py-3.5 sm:py-4 bg-[#1ABC9C] text-white font-bold rounded-xl hover:bg-[#17a08a] transition-all shadow-lg">
               Subscribe
             </button>
           </form>

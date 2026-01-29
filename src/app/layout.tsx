@@ -11,8 +11,11 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Accounting Home | Premium Outsourced Bookkeeping',
+  title: 'BridgeBooks Global | Premium Outsourced Bookkeeping',
   description: 'Scalable financial management to fuel your company\'s expansion without the executive overhead.',
+  icons: {
+    icon: '/favicon.ico',
+  }
 };
 
 export default function RootLayout({
@@ -30,8 +33,10 @@ export default function RootLayout({
       </head>
       <body className={`${manrope.className} bg-[#F9FAFA] dark:bg-[#F9FAFA] font-display text-primary antialiased`}>
         <Header />
-        {children}
-        <Footer />
+        <div className="pt-16 md:pt-20">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -84,8 +84,8 @@ export function JobApplicationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 space-y-6 sm:space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
         <div className="space-y-2">
           <label className="text-sm font-bold text-primary">Name*</label>
           <input
@@ -93,81 +93,81 @@ export function JobApplicationForm() {
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
+            className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all"
             placeholder="John Doe"
           />
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-bold text-primary">Email*</label>
+          <label className="text-sm font-bold text-[#2B3D4E]">Email*</label>
           <input
             type="email"
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
+            className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all"
             placeholder="john@example.com"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-bold text-primary">Phone*</label>
+        <label className="text-sm font-bold text-[#2B3D4E]">Phone*</label>
         <input
           type="tel"
           required
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
+          className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all"
           placeholder="+1 (555) 000-0000"
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-primary">Current Salary</label>
+          <label className="text-sm font-bold text-[#2B3D4E]">Current Salary</label>
           <input
             type="text"
             value={formData.currentSalary}
             onChange={(e) => setFormData({ ...formData, currentSalary: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
+            className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all"
             placeholder="$80,000"
           />
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-bold text-primary">Expected Salary*</label>
+          <label className="text-sm font-bold text-[#2B3D4E]">Expected Salary*</label>
           <input
             type="text"
             required
             value={formData.expectedSalary}
             onChange={(e) => setFormData({ ...formData, expectedSalary: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
+            className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all"
             placeholder="$100,000"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-bold text-primary">Upload Your CV*</label>
+        <label className="text-sm font-bold text-[#2B3D4E]">Upload Your CV*</label>
         <input
           id="cv-upload"
           type="file"
           required
           accept=".pdf,.doc,.docx"
           onChange={handleFileChange}
-          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-accent file:text-white file:font-bold hover:file:bg-accent/90"
+          className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#1ABC9C] file:text-white file:font-bold hover:file:bg-[#1ABC9C]/90"
         />
         <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-bold text-primary">Message</label>
+        <label className="text-sm font-bold text-[#2B3D4E]">Message</label>
         <textarea
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent resize-none"
+          className="w-full rounded-3xl px-4 py-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E] text-sm sm:text-base transition-all resize-none"
           placeholder="Tell us why you're a great fit for this role..."
         />
       </div>
@@ -175,7 +175,7 @@ export function JobApplicationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-accent hover:bg-accent/90 text-white font-bold py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#1ABC9C] hover:bg-[#1ABC9C]/90 text-white font-bold py-3.5 sm:py-4 rounded-xl transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Submitting...' : 'APPLY FOR JOB'}
       </button>

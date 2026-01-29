@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import {sendInfo} from '@/lib/emailSender.tool';
+import Link from 'next/link';
 import React from 'react'
 
 const testimonials = [
@@ -33,6 +33,9 @@ export default function Home() {
     email: '',
     service: 'Full-Cycle Accounting',
   });
+
+  const [message, setMessage] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -42,31 +45,40 @@ export default function Home() {
   }
   
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setMessage('');
 
     if (!formData.email.trim() || !formData.phone.trim()) {
-      alert('Please enter your email and phone.');
+      setMessage('Please enter your email and phone.');
+      setIsSubmitting(false);
       return;
     }
 
-    await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fullName: formData.fullName,
-        phone: formData.phone,
-        email: formData.email,
-        service: formData.service,
-      }),
-    });
-  alert('Thank you! We will contact you soon.');
-    // sendInfo({
-    //   fullName: formData.fullName,
-    //   email: formData.email,
-    //   phone: formData.phone,
-    //   service: formData.service,
-    // });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+        }),
+      });
+
+      if (response.ok) {
+        setMessage('Thank you! We will contact you within 4 business hours.');
+        setFormData({ fullName: '', phone: '', email: '', service: 'Full-Cycle Accounting' });
+      } else {
+        setMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setMessage('Error sending message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
 
@@ -82,7 +94,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 px-6 md:px-20 overflow-hidden relative">
+      <section className="hero-gradient text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden relative">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none">
           <svg fill="none" height="600" viewBox="0 0 600 600" width="600" xmlns="http://www.w3.org/2000/svg">
             <circle cx="400" cy="200" r="300" stroke="white" strokeWidth="2"></circle>
@@ -90,57 +102,58 @@ export default function Home() {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.0] tracking-tighter">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+          <div className="space-y-6 md:space-y-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.0] tracking-tighter">
               Outsourced Accounting <span className="text-[#1ABC9C]">Expertise</span> for Growth.
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-xl font-medium leading-[1.4]">
+            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-xl font-medium leading-[1.4]">
               Scalable financial management to fuel your company's expansion without the executive overhead. We handle the books, you handle the vision.
             </p>
-            <div className="flex items-center gap-6 pt-4">
+            <div className="flex items-center gap-4 md:gap-6 pt-4">
               <div className="flex -space-x-3">
-                <img className="w-12 h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional accountant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bhrheRDlOoppCjq3-hMWmQLdlgcdRRUiPNQmfVdhqQ72EBKZunxxiNE3UeFEHRedmR4QvZpUbdrce29JQZh2W2ofESUL75DlR1muqIjvjgPcCxEXCFxL7IA-pdGxb5sn-6UCgH2L-nF2xFqL8aBU20w1_FxVPvzLHsEbk9Ommo_kyg66aJsJGnu7wdddzTYGIfGq2vi0I657Xet4Y_1veBIuzbO9uMHO6GI2LUDMmWri44NBqGBznMm0q3Nwuw-Vc-d-3oKQNEhY"/>
-                <img className="w-12 h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Financial advisor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-BW_MagYpwIlA-o4VuqKav4s1ktCSHiMJsmKkjiefjia9O5Y_7zkOOgfuZ68zWuu0ghdbcNjgT9eART8FupFr-0z5IactcPCeHQWTlxSvsERaMdwKTMYB8Gs6klwp245qgX26Du_90A7iZzOPyNcIr7anLPVpnBQWfLWmiaRcR_8Z2D5pe9somhtKkcvltIWIVexiYDuWhjYfA-sMnbdqYnCYQrf_h4F59soPx4GeXiNKE9JSUFejKcvQyWUM5aj1G0pi3TkPlAlu"/>
-                <img className="w-12 h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional auditor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYeSj7fnctVIHopXcW0g8B1JucaWyXXR6afRtn1ED_yH-zRK5wcjfytpJsHNPREhmlx7V2Yc9zGW1vBvrXPsOxwYBRHaRlnZMs7iWu0RoGSUJUE7HyfBQEUNOwzm8vc7kE7wrfX5b3JZoXD2NLCX_aR2Jy1kaKGR9q6XnoOIVmHLU7bCCr9TiuH2TL15hPgN2YvUko7iQe7R_3D4HRO95-0hmUZoy537RMop8_DgP2hgly_wqxcYknl0ELFJgt6762Fi71RdnLLIk"/>
+                {/* <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional accountant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bhrheRDlOoppCjq3-hMWmQLdlgcdRRUiPNQmfVdhqQ72EBKZunxxiNE3UeFEHRedmR4QvZpUbdrce29JQZh2W2ofESUL75DlR1muqIjvjgPcCxEXCFxL7IA-pdGxb5sn-6UCgH2L-nF2xFqL8aBU20w1_FxVPvzLHsEbk9Ommo_kyg66aJsJGnu7wdddzTYGIfGq2vi0I657Xet4Y_1veBIuzbO9uMHO6GI2LUDMmWri44NBqGBznMm0q3Nwuw-Vc-d-3oKQNEhY"/> */}
+                <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Financial advisor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-BW_MagYpwIlA-o4VuqKav4s1ktCSHiMJsmKkjiefjia9O5Y_7zkOOgfuZ68zWuu0ghdbcNjgT9eART8FupFr-0z5IactcPCeHQWTlxSvsERaMdwKTMYB8Gs6klwp245qgX26Du_90A7iZzOPyNcIr7anLPVpnBQWfLWmiaRcR_8Z2D5pe9somhtKkcvltIWIVexiYDuWhjYfA-sMnbdqYnCYQrf_h4F59soPx4GeXiNKE9JSUFejKcvQyWUM5aj1G0pi3TkPlAlu"/>
+                {/* <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional auditor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYeSj7fnctVIHopXcW0g8B1JucaWyXXR6afRtn1ED_yH-zRK5wcjfytpJsHNPREhmlx7V2Yc9zGW1vBvrXPsOxwYBRHaRlnZMs7iWu0RoGSUJUE7HyfBQEUNOwzm8vc7kE7wrfX5b3JZoXD2NLCX_aR2Jy1kaKGR9q6XnoOIVmHLU7bCCr9TiuH2TL15hPgN2YvUko7iQe7R_3D4HRO95-0hmUZoy537RMop8_DgP2hgly_wqxcYknl0ELFJgt6762Fi71RdnLLIk"/> */}
               </div>
-              <p className="text-sm font-semibold"><span className="text-[#1ABC9C]">500+</span> Businesses Trust Us</p>
+              <p className="text-xs sm:text-sm font-semibold"><span className="text-[#1ABC9C]">500+</span> Businesses Trust Us</p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl text-[#2B3D4F] relative z-10">
-            <h3 className="text-2xl font-bold mb-2 text-[#2B3D4F]">Request Your Strategy Call</h3>
-            <p className="text-gray-500 text-sm mb-6">Get a personalized growth roadmap in 24 hours.</p>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl text-[#2B3D4F] relative z-10">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#2B3D4F]">Request Your Strategy Call</h3>
+            <p className="text-gray-500 text-sm mb-4 sm:mb-6">Get a personalized growth roadmap in 24 hours.</p>
+            <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Full Name</label>
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Full Name</label>
                   <input name="fullName" onChange={handleChange} value={formData.fullName} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all" placeholder="John Doe" type="text"/>
                 </div>
-                <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Phone Number*</label>
+                <div className="space-y-1 sm:space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Phone Number*</label>
                     <input 
                       name="phone" 
                       onChange={handleChange}
                       value={formData.phone} 
                       required
-                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-gray-400  text-sm transition-all" 
+                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 text-[#2B3D4E]  text-sm transition-all" 
                       placeholder="+1 (555) 000-0000" 
                       type="tel"
+                      pattern="[0-9\+\-\(\)\s]*"
                     />
-                </div>
+                </div>  
               </div>
               
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Work Email*</label>
-                <input name="email" required onChange={handleChange} value={formData.email} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all" placeholder="john@acme.com" type="email"/>
+                <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Work Email*</label>
+                <input name="email" required onChange={handleChange} value={formData.email} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-[#2B3D4E]  text-sm transition-all" placeholder="john@acme.com" type="email"/>
               </div>
-              <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Service Interest</label>
+              <div className="space-y-1 sm:space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Service Interest</label>
                     <select 
                       name="service" 
-                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all appearance-none"
+                      className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-[#2B3D4E]  text-sm transition-all appearance-none"
                       onChange={handleChange} 
                       value={formData.service}
                     >
@@ -152,27 +165,32 @@ export default function Home() {
                       <option>Other</option>
                   </select>
                   </div>
-              <button type="submit" className="w-full bg-[#1ABC9C] hover:bg-[#16a085] text-white font-bold py-4 rounded-3xl transition-all shadow-lg shadow-[#1ABC9C]/20 mt-2">
-                Get Free Consultation
+              <button type="submit" className="w-full bg-[#1ABC9C] hover:bg-[#16a085] text-white font-bold py-3 sm:py-4 rounded-3xl transition-all shadow-lg shadow-[#1ABC9C]/20 mt-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Get Free Consultation'}
               </button>
               <p className="text-center text-[11px] text-gray-400">No commitment required. 100% confidential financial review.</p>
+              {message && (
+                    <div className={`mt-4 p-3 sm:p-4 rounded-xl text-center text-xs sm:text-sm font-medium ${message.includes('Thank you') ? 'bg-[#1ABC9C]/10 text-[#1ABC9C]' : 'bg-red-50 text-red-600'}`}>
+                      {message}
+                    </div>
+                  )}
             </form>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 px-6 md:px-20 bg-[#F9FAFA]">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#F9FAFA]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="max-w-2xl">
-              <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-sm mb-3">Expertise</h4>
-              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight leading-14">Comprehensive Financial Architecture.</h2>
+              <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-xs sm:text-sm mb-3">Expertise</h4>
+              <h2 className="text-[#2B3D4F] text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">Comprehensive Financial Architecture.</h2>
             </div>
             <p className="text-gray-500 max-w-sm text-sm">From daily bookkeeping to high-level strategic planning, we cover every aspect of your fiscal health.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { icon: 'calculate', title: 'Tax Planning', desc: 'Strategic optimization to minimize liability and maximize retained earnings for year-end growth.' },
               { icon: 'query_stats', title: 'Real-time Bookkeeping', desc: 'Always-on tracking with automated data sync, ensuring your dashboard is never out of date.' },
@@ -187,9 +205,11 @@ export default function Home() {
                 </div>
                 <h3 className="text-[#2B3D4F] text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-500 text-xs leading-relaxed mb-6">{service.desc}</p>
-                <a className="text-[#1ABC9C] text-xs font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                <Link href="/contact-us">
+                <div className="text-[#1ABC9C] text-xs font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
                   Learn More <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
+                </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -197,25 +217,25 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 px-6 md:px-20 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
-          <div className="lg:w-1/2 relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkJurSiR7M4pmdrKMEra2O4liZ5lehK7tOqZv0fwQXF7NZlr-nrFmdHpGkOV9PhO6dhB_GyWL35OXPuOciOqbPN7lj68m3UDDvXVVVx5vyBcSQTM4emwkQjeUGFF1S1upKWe4dju5GQ_ZAf0HTNQXBF4i_SjrJnB0_WhprWB6VWZneg10crAqQQebXQ6s0ZWhKr_P9DFz9YzOsEoBG6wkLh5pp4uwICl00l0NycTHTtXu1ckC0O8OlYFb5PUivEhOaYqthVO3gy0gi')"}}></div>
-            <div className="absolute -bottom-8 -right-8 bg-[#2B3D4F] text-[white] bg-[#2A3B4D] p-8 rounded-2xl shadow-xl max-w-xs">
-              <p className="text-3xl font-bold mb-2">99.8%</p>
-              <p className="text-[10px] font-medium text-white/70 uppercase tracking-widest">Accuracy Rating across all audited accounts</p>
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-20">
+          <div className="lg:w-1/2 relative w-full">
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-h-[500px] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkJurSiR7M4pmdrKMEra2O4liZ5lehK7tOqZv0fwQXF7NZlr-nrFmdHpGkOV9PhO6dhB_GyWL35OXPuOciOqbPN7lj68m3UDDvXVVVx5vyBcSQTM4emwkQjeUGFF1S1upKWe4dju5GQ_ZAf0HTNQXBF4i_SjrJnB0_WhprWB6VWZneg10crAqQQebXQ6s0ZWhKr_P9DFz9YzOsEoBG6wkLh5pp4uwICl00l0NycTHTtXu1ckC0O8OlYFb5PUivEhOaYqthVO3gy0gi')"}}></div>
+            <div className="absolute bottom-0 right-0 sm:-bottom-8 sm:-right-8 bg-[#2B3D4F] text-[white] bg-[#2A3B4D] p-4 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs">
+              <p className="text-2xl sm:text-3xl font-bold mb-2">99.8%</p>
+              <p className="text-[9px] sm:text-[10px] font-medium text-white/70 uppercase tracking-widest">Accuracy Rating across all audited accounts</p>
             </div>
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#1ABC9C]/10 rounded-full blur-3xl"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#1ABC9C]/10 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="lg:w-1/2 space-y-10">
+          <div className="lg:w-1/2 space-y-6 sm:space-y-8 lg:space-y-10">
             <div>
-              <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-[10px] mb-3">The Advantage</h4>
-              <h2 className="text-[#2B3D4F] text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-14">Why Modern Firms Partner with Us.</h2>
-              <p className="text-gray-500 text-base leading-relaxed">Generic accounting firms are reactive. We are proactive. We don't just record the past; we architect your future financial success.</p>
+              <h4 className="text-[#1ABC9C] font-bold uppercase tracking-widest text-[9px] sm:text-[10px] mb-3">The Advantage</h4>
+              <h2 className="text-[#2B3D4F] text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 sm:mb-6 leading-tight">Why Modern Firms Partner with Us.</h2>
+              <p className="text-gray-500 text-sm sm:text-base leading-relaxed">Generic accounting firms are reactive. We are proactive. We don't just record the past; we architect your future financial success.</p>
             </div>
 
-            <ul className="space-y-6">
+            <ul className="space-y-4 sm:space-y-6">
               {[
                 { title: 'Technology-Driven Accuracy', desc: 'We utilize AI-powered reconciliation tools to eliminate human error and reduce turnaround by 40%.' },
                 { title: 'Dedicated Account Managers', desc: 'No ticket systems. You get a direct line to a senior CPA who understands your industry inside out.' },
@@ -232,25 +252,26 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-
+             <Link href="/contact-us">
             <button className="bg-[#2B3D4F] text-white px-8 py-4 rounded-xl font-bold hover:bg-black transition-all flex items-center gap-3 text-sm">
               Meet The Team <span className="material-symbols-outlined text-lg">group</span>
             </button>
+             </Link>
           </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-24 px-6 md:px-20 bg-[#F9FAFA] border-y border-gray-100">
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <h2 className="text-4xl text-[#2B3D4F] font-extrabold tracking-tight mb-4">A Seamless Onboarding Journey</h2>
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#F9FAFA] border-y border-gray-100">
+        <div className="max-w-7xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-3xl sm:text-4xl text-[#2B3D4F] font-extrabold tracking-tight mb-3 sm:mb-4">A Seamless Onboarding Journey</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm">Get fully integrated with our premium accounting stack in less than 7 days.</p>
         </div>
 
         <div className="max-w-6xl mx-auto relative">
           <div className="hidden lg:block absolute top-10 left-[10%] right-[10%] h-0.5 bg-gray-200"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 relative z-10">
             {[
               { num: '01', title: 'Discovery Call', desc: 'A 30-minute deep dive into your current challenges and future goals.' },
               { num: '02', title: 'Systems Audit', desc: 'We review your existing tech stack and clean up historical discrepancies.', accent: true },
@@ -274,31 +295,31 @@ export default function Home() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-24 px-6 md:px-20 bg-white overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-[#2B3D4F] rounded-[2rem] p-12 md:p-20 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1ABC9C]/20 rounded-full blur-[100px]"></div>
+          <div className="bg-[#2B3D4F] rounded-2xl sm:rounded-[2rem] p-8 sm:p-12 md:p-16 lg:p-20 text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-[#1ABC9C]/20 rounded-full blur-[100px]"></div>
             
-            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
-              <div className="lg:w-1/3 text-center lg:text-left">
-                <div className="size-20 rounded-2xl overflow-hidden mb-8 border-4 border-white/10 mx-auto lg:mx-0">
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16">
+              <div className="lg:w-1/3 text-center lg:text-left w-full">
+                <div className="size-16 sm:size-20 rounded-2xl overflow-hidden mb-6 sm:mb-8 border-4 border-white/10 mx-auto lg:mx-0">
                   <img className="w-full h-full object-cover" alt={testimonials[currentTestimonial].name} src={testimonials[currentTestimonial].image}/>
                 </div>
-                <div className="flex gap-1 mb-4 justify-center lg:justify-start">
+                <div className="flex gap-1 mb-3 sm:mb-4 justify-center lg:justify-start">
                   {[...Array(5)].map((_, i) => (
                     <span key={i} className="material-symbols-outlined text-[#1ABC9C] fill-1 text-sm">star</span>
                   ))}
                 </div>
-                <p className="text-xl font-bold">{testimonials[currentTestimonial].name}</p>
-                <p className="text-white/60 text-[10px] uppercase tracking-widest font-bold">{testimonials[currentTestimonial].title}</p>
+                <p className="text-lg sm:text-xl font-bold">{testimonials[currentTestimonial].name}</p>
+                <p className="text-white/60 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold">{testimonials[currentTestimonial].title}</p>
               </div>
 
-              <div className="lg:w-2/3">
-                <span className="material-symbols-outlined text-5xl text-[#1ABC9C]/30 mb-6">format_quote</span>
-                <blockquote className="text-2xl md:text-3xl font-medium leading-tight mb-10 min-h-[160px] flex items-center">
+              <div className="lg:w-2/3 w-full">
+                <span className="material-symbols-outlined text-4xl sm:text-5xl text-[#1ABC9C]/30 mb-4 sm:mb-6 block">format_quote</span>
+                <blockquote className="text-xl sm:text-2xl md:text-3xl font-medium leading-tight mb-8 sm:mb-10 min-h-[120px] sm:min-h-[160px] flex items-center">
                   {testimonials[currentTestimonial].quote}
                 </blockquote>
-                <div className="flex gap-4">
+                <div className="flex gap-3 sm:gap-4">
                   <button onClick={handlePrevTestimonial} className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#2B3D4F] transition-all">
                     <span className="material-symbols-outlined text-lg">chevron_left</span>
                   </button>

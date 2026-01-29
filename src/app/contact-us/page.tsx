@@ -47,17 +47,17 @@ export default function Contact() {
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 pb-28 bg-[#F9FAFA]">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 lg:py-20 pb-20 sm:pb-28 bg-[#F9FAFA]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-start">
           {/* Left Column: Trust & Info */}
-          <div className="flex flex-col gap-10">
-            <div className="space-y-6">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-xs font-bold uppercase tracking-wider">Growth Ready</span>
-              <h1 className="text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#2B3D4E]">
+          <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10">
+            <div className="space-y-4 sm:space-y-6">
+              <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#1ABC9C]/10 text-[#1ABC9C] text-xs font-bold uppercase tracking-wider">Growth Ready</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#2B3D4E]">
                 Expert Accounting, <br/>
                 <span className="text-[#1ABC9C]">Engineered</span> for Growth.
               </h1>
-              <p className="text-lg text-[#2B3D4E]/70 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg text-[#2B3D4E]/70 leading-relaxed max-w-xl">
                 Stop drowning in spreadsheets. Speak with a senior partner today and discover how our outsourced solutions streamline your global operations.
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-[#2B3D4E]">Global Headquarters</h4>
-                  <p className="text-[#2B3D4E]/60">1200 Financial District, Suite 400<br/>San Francisco, CA 94104</p>
+                  <p className="text-[#2B3D4E]/60">4, Regents Court, Sopwith Way,<br/>Kingston Upon Thames KT2 5AG</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -88,7 +88,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-[#2B3D4E]">Partner Support</h4>
-                  <p className="text-[#2B3D4E]/60">growth@finscale-accounting.com</p>
+                  <p className="text-[#2B3D4E]/60">bridgebooksglobal@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -204,12 +204,12 @@ export default function Contact() {
 
                 <div className="pt-4">
                   <button 
-                    className="w-full h-16 bg-[#1ABC9C] hover:bg-[#16a085] text-white font-extrabold text-lg rounded-3xl shadow-lg shadow-[#1ABC9C]/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed" 
+                    className="w-full h-16 bg-[#1ABC9C] hover:bg-[#16a085] text-white font-extrabold md:text-lg rounded-3xl shadow-lg shadow-[#1ABC9C]/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed" 
                     type="submit"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Sending...' : 'Schedule Free Consultation'}
-                    <span className="material-symbols-outlined">arrow_forward</span>
+                    <span className="material-symbols-outlined ">arrow_forward</span>
                   </button>
                   <div className="flex items-center justify-center gap-2 mt-4 text-xs text-[#2B3D4E]/50 font-medium">
                     <span className="material-symbols-outlined text-sm">lock</span>
@@ -231,14 +231,19 @@ export default function Contact() {
       <section className=" w-full h-[400px] relative bg-[#F9FAFA] overflow-hidden border-t border-gray-200">
         <div 
           className="absolute inset-0 grayscale opacity-70 hover:opacity-100 transition-opacity duration-700" 
-          style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLU_FvK2PzEmTrXs2e7tTKrp9Zy7NzIoB5B5Hx0UY6Acacy7TfbQJrPYUWiQ7uZivWxxfGj2zwTHHNa9YhLtum5AdnumHZ9SOqT0kEWPd7vExNdXETiY_Mub9AuPKdJ0JpsV17ePiVQEypV1BozCfVoRPNQZshGpUxg1RGQZUNAiK-ainTIcVQaLtrjJA5qFXMUNSj16wf_ri6AOIPfxBMOiDJ0TBX0dpXL37NlMcUhXgMYLAmYcGmgjCF1-K4GDq4ZMtUu8NwzGbA')", backgroundSize: 'cover', backgroundPosition: 'center'}}
+          style={{backgroundImage: "url('/image.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}
         >
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#F9FAFA] to-transparent h-20"></div>
         <div className="absolute bottom-8 left-8 lg:left-24 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 max-w-sm">
           <h5 className="text-[#2B3D4E] font-bold text-sm mb-1 uppercase tracking-widest">Office Location</h5>
-          <p className="text-[#2B3D4E] text-sm font-medium">1200 Financial District, San Francisco, CA</p>
-          <a className="text-[#1ABC9C] text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline" href="#">
+          <p className="text-[#2B3D4E] text-sm font-medium">4, Regents Court, Sopwith Way, Kingston Upon Thames KT2 5AG</p>
+          <a 
+            className="text-[#1ABC9C] text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline" 
+            href="https://www.google.com/maps/search/4+Regents+Court+Sopwith+Way+Kingston+Upon+Thames+KT2+5AG"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Open in Google Maps <span className="material-symbols-outlined text-[14px]">open_in_new</span>
           </a>
         </div>
