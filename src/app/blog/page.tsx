@@ -119,7 +119,7 @@ export default function Blog() {
               <span className="material-symbols-outlined text-sm">article</span>
               Insights & Resources
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-[1.1] tracking-[-0.04em] text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-[1.1] tracking-[-0.04em] text-[#2B3D4E]">
               Financial Insights for <span className="text-[#1ABC9C] italic">Modern Businesses</span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-2xl leading-relaxed">

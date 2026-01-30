@@ -166,7 +166,7 @@ export default function Contact() {
                     <label className="text-sm font-bold text-[#2B3D4E] px-1">Country</label>
                     <select 
                       name="country" 
-                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400 transition-all appearance-none"
+                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-[#2B3D4E] transition-all appearance-none"
                     >
                       <option value="">Select a country</option>
                       {COUNTRIES.map((country) => (
@@ -180,7 +180,7 @@ export default function Contact() {
                     <label className="text-sm font-bold text-[#2B3D4E] px-1">Service Interest</label>
                     <select 
                       name="service" 
-                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400 transition-all appearance-none"
+                      className="w-full h-14 px-5 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-[#2B3D4E] transition-all appearance-none"
                     >
                       <option>Full-Cycle Accounting</option>
                       <option>Fractional CFO</option>
@@ -196,7 +196,7 @@ export default function Contact() {
                   <label className="text-sm font-bold text-[#2B3D4E] px-1">Tell us about your challenges</label>
                   <textarea 
                     name="challenges" 
-                    className="w-full px-5 py-4 rounded-3xl border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 transition-all resize-none" 
+                    className="w-full px-5 py-4 rounded-3xl text-[#2B3D4E] border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] placeholder-gray-400 transition-all resize-none" 
                     placeholder="How can we help you scale today?" 
                     rows={4}
                   ></textarea>

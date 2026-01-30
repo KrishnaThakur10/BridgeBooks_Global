@@ -128,7 +128,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Full Name</label>
-                  <input name="fullName" onChange={handleChange} value={formData.fullName} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-gray-400  text-sm transition-all" placeholder="John Doe" type="text"/>
+                  <input name="fullName" onChange={handleChange} value={formData.fullName} className="w-full rounded-3xl p-3 border border-gray-200 bg-[#F9FAFA] focus:ring-1 focus:ring-[#2596be]/20 focus:outline-[#2596be] text-[#2B3D4E]  text-sm transition-all" placeholder="John Doe" type="text"/>
                 </div>
                 <div className="space-y-1 sm:space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-[#2B3D4E]">Phone Number*</label>
