@@ -19,6 +19,7 @@ import Link from 'next/link';
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('all');
@@ -28,7 +29,7 @@ export default function AdminDashboard() {
   // Check localStorage for saved password on mount
   useEffect(() => {
     const savedPassword = localStorage.getItem('adminPassword');
-    if (savedPassword && (savedPassword === process.env.NEXT_PUBLIC_ADMIN_PASSWORD || savedPassword === 'Krishna@1234')) {
+    if (savedPassword && savedPassword === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       setPassword(savedPassword);
       fetchLeads();
@@ -37,7 +38,7 @@ export default function AdminDashboard() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD || password === 'Krishna@1234') {
+    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       localStorage.setItem('adminPassword', password);
       setIsAuthenticated(true);
       fetchLeads();
@@ -130,26 +131,37 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6">
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-[#253647] rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="material-symbols-outlined text-white text-3xl">admin_panel_settings</span>
             </div>
-            <h1 className="text-2xl font-extrabold text-primary">Admin Dashboard</h1>
+            <h1 className="text-2xl font-extrabold text-[#253647]">Admin Dashboard</h1>
             <p className="text-gray-600 mt-2">Enter password to access leads</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-bold text-primary mb-2">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent"
-                placeholder="Enter admin password"
-              />
+              <label className="block text-sm font-bold text-[#253647] mb-2">Password</label>
+              <div className="relative flex items-center">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C]"
+                  placeholder="Enter admin password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 text-gray-400 hover:text-gray-600"
+                >
+                  <span className="material-symbols-outlined">
+                    {showPassword ? 'visibility' : 'visibility_off'}
+                  </span>
+                </button>
+              </div>
             </div>
             <button
               type="submit"
-              className="w-full bg-accent text-white font-bold py-3 rounded-xl hover:bg-accent/90 transition-all"
+              className="w-full bg-[#1ABC9C] text-white font-bold py-3 rounded-xl hover:bg-[#1ABC9C]/90 transition-all"
             >
               Login
             </button>
