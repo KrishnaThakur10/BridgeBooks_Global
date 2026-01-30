@@ -79,7 +79,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-[#2B3D4E]">Direct Line</h4>
-                  <p className="text-[#2B3D4E]/60">+1 (800) 555-FINANCE</p>
+                  <p className="text-[#2B3D4E]/60">+91 9990048144</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -235,7 +235,7 @@ export default function Contact() {
         >
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#F9FAFA] to-transparent h-20"></div>
-        <div className="absolute bottom-8 left-8 lg:left-24 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 max-w-sm">
+        <div className="absolute bottom-8 left-1 lg:left-24 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 max-w-sm">
           <h5 className="text-[#2B3D4E] font-bold text-sm mb-1 uppercase tracking-widest">Office Location</h5>
           <p className="text-[#2B3D4E] text-sm font-medium">4, Regents Court, Sopwith Way, Kingston Upon Thames KT2 5AG</p>
           <a 

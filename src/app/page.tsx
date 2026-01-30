@@ -112,9 +112,9 @@ export default function Home() {
             </p>
             <div className="flex items-center gap-4 md:gap-6 pt-4">
               <div className="flex -space-x-3">
-                {/* <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional accountant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bhrheRDlOoppCjq3-hMWmQLdlgcdRRUiPNQmfVdhqQ72EBKZunxxiNE3UeFEHRedmR4QvZpUbdrce29JQZh2W2ofESUL75DlR1muqIjvjgPcCxEXCFxL7IA-pdGxb5sn-6UCgH2L-nF2xFqL8aBU20w1_FxVPvzLHsEbk9Ommo_kyg66aJsJGnu7wdddzTYGIfGq2vi0I657Xet4Y_1veBIuzbO9uMHO6GI2LUDMmWri44NBqGBznMm0q3Nwuw-Vc-d-3oKQNEhY"/> */}
+                <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional accountant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bhrheRDlOoppCjq3-hMWmQLdlgcdRRUiPNQmfVdhqQ72EBKZunxxiNE3UeFEHRedmR4QvZpUbdrce29JQZh2W2ofESUL75DlR1muqIjvjgPcCxEXCFxL7IA-pdGxb5sn-6UCgH2L-nF2xFqL8aBU20w1_FxVPvzLHsEbk9Ommo_kyg66aJsJGnu7wdddzTYGIfGq2vi0I657Xet4Y_1veBIuzbO9uMHO6GI2LUDMmWri44NBqGBznMm0q3Nwuw-Vc-d-3oKQNEhY"/>
                 <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Financial advisor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-BW_MagYpwIlA-o4VuqKav4s1ktCSHiMJsmKkjiefjia9O5Y_7zkOOgfuZ68zWuu0ghdbcNjgT9eART8FupFr-0z5IactcPCeHQWTlxSvsERaMdwKTMYB8Gs6klwp245qgX26Du_90A7iZzOPyNcIr7anLPVpnBQWfLWmiaRcR_8Z2D5pe9somhtKkcvltIWIVexiYDuWhjYfA-sMnbdqYnCYQrf_h4F59soPx4GeXiNKE9JSUFejKcvQyWUM5aj1G0pi3TkPlAlu"/>
-                {/* <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional auditor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYeSj7fnctVIHopXcW0g8B1JucaWyXXR6afRtn1ED_yH-zRK5wcjfytpJsHNPREhmlx7V2Yc9zGW1vBvrXPsOxwYBRHaRlnZMs7iWu0RoGSUJUE7HyfBQEUNOwzm8vc7kE7wrfX5b3JZoXD2NLCX_aR2Jy1kaKGR9q6XnoOIVmHLU7bCCr9TiuH2TL15hPgN2YvUko7iQe7R_3D4HRO95-0hmUZoy537RMop8_DgP2hgly_wqxcYknl0ELFJgt6762Fi71RdnLLIk"/> */}
+                <img className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#27394B] object-cover" alt="Professional auditor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYeSj7fnctVIHopXcW0g8B1JucaWyXXR6afRtn1ED_yH-zRK5wcjfytpJsHNPREhmlx7V2Yc9zGW1vBvrXPsOxwYBRHaRlnZMs7iWu0RoGSUJUE7HyfBQEUNOwzm8vc7kE7wrfX5b3JZoXD2NLCX_aR2Jy1kaKGR9q6XnoOIVmHLU7bCCr9TiuH2TL15hPgN2YvUko7iQe7R_3D4HRO95-0hmUZoy537RMop8_DgP2hgly_wqxcYknl0ELFJgt6762Fi71RdnLLIk"/>
               </div>
               <p className="text-xs sm:text-sm font-semibold"><span className="text-[#1ABC9C]">500+</span> Businesses Trust Us</p>
             </div>
@@ -220,12 +220,7 @@ export default function Home() {
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-20">
           <div className="lg:w-1/2 relative w-full">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-h-[500px] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkJurSiR7M4pmdrKMEra2O4liZ5lehK7tOqZv0fwQXF7NZlr-nrFmdHpGkOV9PhO6dhB_GyWL35OXPuOciOqbPN7lj68m3UDDvXVVVx5vyBcSQTM4emwkQjeUGFF1S1upKWe4dju5GQ_ZAf0HTNQXBF4i_SjrJnB0_WhprWB6VWZneg10crAqQQebXQ6s0ZWhKr_P9DFz9YzOsEoBG6wkLh5pp4uwICl00l0NycTHTtXu1ckC0O8OlYFb5PUivEhOaYqthVO3gy0gi')"}}></div>
-            <div className="absolute bottom-0 right-0 sm:-bottom-8 sm:-right-8 bg-[#2B3D4F] text-[white] bg-[#2A3B4D] p-4 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs">
-              <p className="text-2xl sm:text-3xl font-bold mb-2">99.8%</p>
-              <p className="text-[9px] sm:text-[10px] font-medium text-white/70 uppercase tracking-widest">Accuracy Rating across all audited accounts</p>
-            </div>
-            <div className="absolute -top-10 -left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#1ABC9C]/10 rounded-full blur-3xl"></div>
+            <div className="relative z-10 mx-auto rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-h-[500px] bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkJurSiR7M4pmdrKMEra2O4liZ5lehK7tOqZv0fwQXF7NZlr-nrFmdHpGkOV9PhO6dhB_GyWL35OXPuOciOqbPN7lj68m3UDDvXVVVx5vyBcSQTM4emwkQjeUGFF1S1upKWe4dju5GQ_ZAf0HTNQXBF4i_SjrJnB0_WhprWB6VWZneg10crAqQQebXQ6s0ZWhKr_P9DFz9YzOsEoBG6wkLh5pp4uwICl00l0NycTHTtXu1ckC0O8OlYFb5PUivEhOaYqthVO3gy0gi')"}}></div>
           </div>
 
           <div className="lg:w-1/2 space-y-6 sm:space-y-8 lg:space-y-10">

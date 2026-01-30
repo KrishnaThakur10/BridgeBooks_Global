@@ -39,10 +39,10 @@ export default function Footer() {
             <div className="space-y-6">
               <h4 className="font-bold uppercase text-[10px] tracking-widest text-gray-400">Services</h4>
               <ul className="space-y-4 text-[12px] text-[#2B3D4F] font-semibold">
-                <li><Link className="hover:text-accent transition-colors" href="#">Tax Planning</Link></li>
-                <li><Link className="hover:text-accent transition-colors" href="#">Bookkeeping</Link></li>
-                <li><Link className="hover:text-accent transition-colors" href="#">CFO Advisory</Link></li>
-                <li><Link className="hover:text-accent transition-colors" href="#">Payroll</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/contact-us">Tax Planning</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/contact-us">Bookkeeping</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/contact-us">CFO Advisory</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/contact-us">Payroll</Link></li>
               </ul>
             </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
               <h4 className="font-bold uppercase text-[10px] tracking-widest text-gray-400">Company</h4>
               <ul className="space-y-4 text-[12px] text-[#2B3D4F] font-semibold">
                 <li><Link className="hover:text-accent transition-colors" href="/about-us">About Us</Link></li>
-                <li><Link className="hover:text-accent transition-colors" href="#">Our Team</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/services">Services</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/careers">Careers</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/contact-us">Contact</Link></li>
               </ul>
